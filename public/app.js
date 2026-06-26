@@ -117,7 +117,22 @@ function loadDemoValues() {
 
 function renderResult(data) {
   $("result").textContent = typeof data === "string" ? data : JSON.stringify(data, null, 2);
-  if (data?.decision) renderDecision(data);
+  if (data?.decision) {
+    renderDecision(data);
+  } else if (data?.error) {
+    $("decision-card").className = "panel decision-card error";
+    $("decision-verdict").textContent = "ERROR";
+    $("decision-message").textContent = data.error;
+    $("decision-mode-chip").textContent = "SYSTEM";
+    $("decision-mode-chip").className = "chip neutral";
+    $("risk-score").textContent = "--";
+    $("confidence-score").textContent = "--";
+    const ring = $("confidence-ring");
+    if (ring) {
+      ring.style.background = `conic-gradient(var(--brand-red) 0%, rgba(255,255,255,0.05) 0%)`;
+      ring.style.boxShadow = `0 0 15px rgba(255,0,0,0.2)`;
+    }
+  }
 }
 
 function renderWaitingDecision() {
