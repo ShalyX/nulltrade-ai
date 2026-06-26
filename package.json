@@ -1,0 +1,25 @@
+{
+  "name": "nulltrade-ai-production",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Production-shaped NullTrade AI trading filter with Bitget live market data, guarded live trading, user accounts, and persisted decision logs.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node server.js",
+    "check": "node --check server.js"
+  },
+  "engines": {
+    "node": ">=20"
+  },
+  "keywords": [
+    "bitget",
+    "trading-agent",
+    "risk-filter",
+    "hackathon"
+  ],
+  "dependencies": {
+    "pg": "^8.13.1"
+  },
+  "license": "MIT"
+}

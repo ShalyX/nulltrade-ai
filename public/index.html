@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NullTrade AI | Premium Refusal Engine</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <!-- Background glowing orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <header class="site-header">
+      <a class="brand" href="/" aria-label="NullTrade AI home">
+        <span class="brand-mark">N</span>
+        <span>NullTrade AI</span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="#why">Why</a>
+        <a href="#flow">Flow</a>
+        <a href="#safety">Safety</a>
+      </nav>
+      <a class="header-cta" href="/console.html">Open app</a>
+    </header>
+
+    <main>
+      <section class="landing-hero">
+        <div class="hero-copy">
+          <span class="eyebrow">Bitget futures trading filter</span>
+          <h1>Trade less. Miss fewer good trades. Avoid more bad ones.</h1>
+          <p>NullTrade AI sits between a trade idea and execution. It checks whether market conditions are worth risking capital, then logs the decision in a format judges and users can verify.</p>
+          <div class="hero-actions">
+            <a class="btn-primary" href="/console.html">Start filtering trades</a>
+            <a class="btn-ghost" href="#flow">See how it works</a>
+          </div>
+        </div>
+
+        <aside class="signal-card" aria-label="Decision summary preview">
+          <div class="signal-card-head">
+            <span>Current recommendation</span>
+            <strong>NO TRADE</strong>
+          </div>
+          <div class="signal-score">
+            <span style="width: 38%"></span>
+          </div>
+          <dl>
+            <div><dt>Spread</dt><dd>Too wide</dd></div>
+            <div><dt>Funding</dt><dd>Elevated</dd></div>
+            <div><dt>Liquidity</dt><dd>Below guardrail</dd></div>
+            <div><dt>Action</dt><dd>Wait</dd></div>
+          </dl>
+        </aside>
+      </section>
+
+      <section class="landing-band" aria-label="Product highlights">
+        <article class="glass-panel">
+          <span>Use now</span>
+          <strong>Guest mode, no setup required</strong>
+        </article>
+        <article class="glass-panel">
+          <span>Market context</span>
+          <strong>Live Bitget ticker integration</strong>
+        </article>
+        <article class="glass-panel">
+          <span>Evidence</span>
+          <strong>Immutable saved audit logs</strong>
+        </article>
+      </section>
+
+      <section id="why" class="page-section two-column">
+        <div>
+          <span class="eyebrow">The thesis</span>
+          <h2>Most trading agents are too eager.</h2>
+        </div>
+        <div class="copy-block">
+          <p>NullTrade AI is optimized for trade filtering, not signal generation. It assumes the incoming strategy may have useful ideas, but only some deserve execution after liquidity, spread, funding, volatility, recent performance, and news regime are checked.</p>
+          <p>The edge is refusal. A rejected trade is not an empty output; it is a capital-preserving decision with a verifiable reason attached.</p>
+        </div>
+      </section>
+
+      <section id="flow" class="page-section">
+        <div class="section-intro">
+          <span class="eyebrow">Workflow</span>
+          <h2>Three steps from idea to decision log.</h2>
+        </div>
+        <div class="workflow-grid">
+          <article class="glass-panel">
+            <span>01</span>
+            <h3>Enter or import a candidate</h3>
+            <p>Use a manual setup today. Wire in upstream strategy signals later via the API.</p>
+          </article>
+          <article class="glass-panel">
+            <span>02</span>
+            <h3>Run the refusal engine</h3>
+            <p>The filter scores market quality and blocks weak execution conditions dynamically.</p>
+          </article>
+          <article class="glass-panel">
+            <span>03</span>
+            <h3>Save proof</h3>
+            <p>Every accepted, rejected, blocked, or submitted trade becomes an immutable audit log.</p>
+          </article>
+        </div>
+      </section>
+
+      <section id="safety" class="page-section safety-panel glass-panel">
+        <div>
+          <span class="eyebrow">Safety model</span>
+          <h2>Live trading is possible, but highly guarded.</h2>
+          <p>Users connect their own Bitget key. The app encrypts it, applies an order cap, restricts symbols, asks for confirmation, and only submits when the agent says TRADE.</p>
+        </div>
+        <a class="btn-primary" href="/console.html">Open the console</a>
+      </section>
+    </main>
+  </body>
+</html>

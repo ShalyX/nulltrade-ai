@@ -1,0 +1,50 @@
+services:
+  - type: web
+    name: nulltrade-ai
+    runtime: node
+    plan: starter
+    buildCommand: "npm install"
+    startCommand: "node server.js"
+    envVars:
+      - key: NODE_VERSION
+        value: "20"
+      - key: NODE_ENV
+        value: "production"
+      - key: PORT
+        value: "10000"
+      - key: APP_ORIGIN
+        sync: false
+      - key: APP_SECRET
+        generateValue: true
+      - key: DATABASE_URL
+        fromDatabase:
+          name: nulltrade-ai-db
+          property: connectionString
+      - key: DATA_DIR
+        value: "/var/data/nulltrade-ai"
+      - key: LIVE_TRADING_ENABLED
+        value: "true"
+      - key: LIVE_MAX_NOTIONAL_USDT
+        value: "25"
+      - key: LIVE_ALLOWED_SYMBOLS
+        value: "BTCUSDT,ETHUSDT,SOLUSDT"
+      - key: BITGET_BASE_URL
+        value: "https://api.bitget.com"
+      - key: BITGET_PRODUCT_TYPE
+        value: "USDT-FUTURES"
+      - key: BITGET_MARGIN_MODE
+        value: "isolated"
+      - key: BITGET_MARGIN_COIN
+        value: "USDT"
+      - key: BITGET_API_KEY
+        sync: false
+      - key: BITGET_API_SECRET
+        sync: false
+      - key: BITGET_API_PASSPHRASE
+        sync: false
+      - key: BITGET_MCP_URL
+        value: "https://bitget-ai.gitbook.io/hackathon/~gitbook/mcp"
+databases:
+  - name: nulltrade-ai-db
+    databaseName: nulltrade_ai
+    plan: free

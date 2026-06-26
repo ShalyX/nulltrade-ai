@@ -1,0 +1,258 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>NullTrade AI Console | Dashboard</title>
+    <link rel="stylesheet" href="/styles.css" />
+  </head>
+  <body>
+    <!-- Background glowing orbs -->
+    <div class="orb orb-1"></div>
+    <div class="orb orb-2"></div>
+
+    <header class="terminal-header">
+      <a class="brand" href="/" aria-label="NullTrade AI home">
+        <span class="brand-mark">N</span>
+        <span>
+          <strong>NullTrade AI</strong>
+        </span>
+      </a>
+      <nav class="nav-links" aria-label="Primary navigation">
+        <a href="/">Overview</a>
+        <a href="#receipts">Receipts</a>
+      </nav>
+      <div class="status-pill-row" aria-label="System status">
+        <span id="live-status-pill" class="status-chip warn">Live trading: OFF</span>
+        <span id="ticker-status-pill" class="status-chip ok">Public ticker: ON</span>
+        <span id="mode-status-pill" class="status-chip neutral">Mode: Paper</span>
+        <button id="start-tour-btn" class="status-chip action-chip">Take a Tour</button>
+      </div>
+    </header>
+
+    <main>
+      <section class="terminal-intro">
+        <div>
+          <span class="eyebrow">Bitget futures trade filter</span>
+          <h1>Evaluate the trade before execution.</h1>
+          <p>NullTrade AI takes a candidate setup and returns TRADE or NO TRADE with risk reasons, guardrail checks, and an immutable audit receipt.</p>
+        </div>
+        <div class="terminal-summary">
+          <span>Refusal-first agent</span>
+          <strong id="console-symbol">BTCUSDT</strong>
+          <small id="console-summary">Awaiting candidate evaluation</small>
+        </div>
+      </section>
+
+      <section class="dashboard-layout">
+        <!-- Left Sidebar: Settings & Ticket -->
+        <aside class="left-rail">
+          <section class="panel trade-ticket">
+            <div class="compact-title">
+              <span class="panel-kicker">Candidate</span>
+              <h2>Trade ticket</h2>
+            </div>
+
+            <div class="ticket-row">
+              <label>Symbol<input id="symbol" value="BTCUSDT" /></label>
+              <label>Side
+                <select id="side">
+                  <option>LONG</option>
+                  <option>SHORT</option>
+                </select>
+              </label>
+            </div>
+            <div class="ticket-row">
+              <label>Type
+                <select id="order-type">
+                  <option>market</option>
+                  <option>limit</option>
+                </select>
+              </label>
+              <label>Strictness<input id="strictness" type="number" min="45" max="95" value="72" /></label>
+            </div>
+            <div class="ticket-row">
+              <label>Price<input id="price" type="number" step="0.01" value="65000" /></label>
+              <label>Size<input id="size" type="number" step="0.0001" value="0.0003" /></label>
+            </div>
+
+            <div class="risk-input-grid">
+              <label>Spread bps<input id="spread" type="number" value="8" /></label>
+              <label>Funding bps<input id="funding" type="number" value="8" /></label>
+              <label>Liquidity<input id="liquidity" type="number" value="82" /></label>
+              <label>Volatility<input id="volatility" type="number" value="42" /></label>
+              <label>Technical<input id="technical" type="number" value="78" /></label>
+              <label>Recent perf.<input id="recent" type="number" value="72" /></label>
+              <label>News regime<input id="news" type="number" value="70" /></label>
+              <label>Drawdown risk<input id="drawdown" type="number" value="24" /></label>
+            </div>
+          </section>
+
+          <section class="panel account-secondary">
+            <details open>
+              <summary>Account mode</summary>
+              <p>Guest mode is enough for paper receipts.</p>
+              <label>Email<input id="email" type="email" autocomplete="email" value="judge@example.com" /></label>
+              <label>Password<input id="password" type="password" autocomplete="current-password" value="change-this-password" /></label>
+              <div class="button-grid">
+                <button id="guest-btn" type="button">Guest</button>
+                <button id="register-btn" class="secondary" type="button">Register</button>
+                <button id="login-btn" class="secondary" type="button">Log in</button>
+                <button id="logout-btn" class="ghost" type="button">Log out</button>
+              </div>
+              <div id="account-state" class="state-pill">Not logged in</div>
+            </details>
+          </section>
+
+          <section class="panel account-secondary">
+            <details>
+              <summary>Exchange key</summary>
+              <p>Optional. Required only for guarded live Bitget execution.</p>
+              <label>API Key<input id="api-key" autocomplete="off" /></label>
+              <label>API Secret<input id="api-secret" type="password" autocomplete="off" /></label>
+              <label>Passphrase<input id="api-passphrase" type="password" autocomplete="off" /></label>
+              <div class="button-grid">
+                <button id="connect-exchange-btn" type="button">Connect</button>
+                <button id="disconnect-exchange-btn" class="secondary" type="button">Remove</button>
+              </div>
+              <div id="exchange-state" class="state-pill subtle">Exchange not connected</div>
+            </details>
+          </section>
+        </aside>
+
+        <!-- Center Stage: Main Decision Engine -->
+        <section class="center-stage">
+          <section id="decision-card" class="decision-card waiting">
+            <div class="decision-topline">
+              <div>
+                <span class="panel-kicker">Decision</span>
+                <h2 id="decision-verdict">WAITING</h2>
+              </div>
+              <span id="decision-mode-chip" class="chip neutral">PAPER</span>
+            </div>
+
+            <p id="decision-message" class="decision-message">No decision yet. Enter a trade setup and run the refusal engine.</p>
+
+            <div class="score-grid">
+              <article class="score-card">
+                <span>Risk score</span>
+                <strong id="risk-score">--</strong>
+              </article>
+              <article class="score-card confidence-widget">
+                <span>Confidence</span>
+                <div class="confidence-ring-wrap" id="confidence-ring">
+                  <strong id="confidence-score">--</strong>
+                </div>
+              </article>
+            </div>
+
+            <div class="recommended-action">
+              <span>Recommended action</span>
+              <strong id="recommended-action">Run refusal engine</strong>
+            </div>
+
+            <div class="guardrail-wrap">
+              <div class="mini-section-title">
+                <span>Guardrail checks</span>
+              </div>
+              <div id="guardrail-checks" class="guardrail-checks">
+                <span class="check-chip neutral">Waiting for setup</span>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel risk-breakdown">
+            <div class="section-head">
+              <div>
+                <span class="panel-kicker">Risk breakdown</span>
+                <h2>Setup quality</h2>
+              </div>
+              <button id="demo-btn" class="secondary" type="button">Demo values</button>
+            </div>
+            <div class="risk-meters">
+              <div class="meter-row">
+                <div class="meter-row-header"><span>Spread</span><strong id="meter-spread-value">--</strong></div>
+                <div class="meter-bar-bg"><i id="meter-spread"></i></div>
+              </div>
+              <div class="meter-row">
+                <div class="meter-row-header"><span>Funding</span><strong id="meter-funding-value">--</strong></div>
+                <div class="meter-bar-bg"><i id="meter-funding"></i></div>
+              </div>
+              <div class="meter-row">
+                <div class="meter-row-header"><span>Liquidity</span><strong id="meter-liquidity-value">--</strong></div>
+                <div class="meter-bar-bg"><i id="meter-liquidity"></i></div>
+              </div>
+              <div class="meter-row">
+                <div class="meter-row-header"><span>Drawdown</span><strong id="meter-drawdown-value">--</strong></div>
+                <div class="meter-bar-bg"><i id="meter-drawdown"></i></div>
+              </div>
+            </div>
+          </section>
+
+          <section class="action-panel">
+            <button id="evaluate-btn" class="primary" type="button">Run Refusal Engine</button>
+            <button id="execute-btn" class="danger" type="button">Execute Live If Approved</button>
+          </section>
+        </section>
+
+        <!-- Right Rail: Live Market & Audit Logs -->
+        <aside class="right-rail">
+          <section class="panel ticker-panel">
+            <div class="section-head">
+              <div>
+                <span class="panel-kicker">Live market</span>
+                <h2>Bitget ticker</h2>
+              </div>
+              <button id="ticker-btn" class="secondary" type="button">Auto: OFF</button>
+            </div>
+            <div class="ticker-price" id="ticker-price">--</div>
+            <div class="ticker-meta">
+              <span id="ticker-symbol">BTCUSDT</span>
+              <span id="ticker-state">Ready</span>
+            </div>
+          </section>
+
+          <section class="panel safety-panel-console">
+            <div class="compact-title">
+              <span class="panel-kicker">Safety controls</span>
+              <h2>Execution guard</h2>
+            </div>
+            <div class="safety-list">
+              <span>Agent approval required</span>
+              <span>Allowed symbols only</span>
+              <span>Notional cap enforced</span>
+              <span>User-owned Bitget key</span>
+            </div>
+            <label class="risk-ack">
+              <input id="risk-ack" type="checkbox" />
+              <span>I understand live futures trading can lose money and I am using a restricted key with small size.</span>
+            </label>
+          </section>
+
+          <section id="receipts" class="panel log-panel">
+            <div class="section-head">
+              <div>
+                <span class="panel-kicker">Audit receipts</span>
+                <h2>Recent decisions</h2>
+              </div>
+              <div class="section-actions" style="display:flex;gap:8px;">
+                <button id="logs-btn" class="secondary" type="button">Refresh</button>
+                <button id="export-logs-btn" class="secondary" type="button">Export</button>
+              </div>
+            </div>
+            <div id="logs-list" class="receipt-list"></div>
+          </section>
+
+          <section class="panel developer-panel">
+            <details>
+              <summary>Developer payload</summary>
+              <pre id="result">No backend payload yet.</pre>
+            </details>
+          </section>
+        </aside>
+      </section>
+    </main>
+    <script src="/app.js"></script>
+    <script src="/tour.js"></script>
+  </body>
+</html>
