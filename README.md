@@ -1,103 +1,72 @@
-# NullTrade AI Production App
+# NullTrade AI
 
-NullTrade AI is a live-capable Bitget trading agent that filters trades instead of generating more trades. It accepts candidate opportunities, scores execution quality, rejects weak setups, stores every decision, and can place guarded Bitget futures orders using each user's own connected Bitget API key.
+NullTrade AI is a zero-trust, live-capable risk infrastructure layer that sits between your AI trading agents and the Bitget exchange. Instead of generating trades, NullTrade AI acts as a defensive proxy—it intercepts candidate trades, scores their execution quality against strict safety parameters, blocks weak or dangerous setups, and executes only if the risk thresholds are met.
 
-## What Is Production Ready
+## Features
 
-- User registration, login, and one-click guest accounts
-- Password hashing with PBKDF2
-- Signed HTTP-only sessions
-- HTTPS-aware secure cookies in production
-- CSRF protection for mutating requests
-- In-memory route rate limiting
-- Persisted user accounts and decision logs
-- Live Bitget market ticker ingestion without exchange credentials
-- Per-user encrypted Bitget API key storage
-- Bitget signed REST client for futures orders
-- Live-trading kill switch
-- Per-order notional cap
-- Allowed-symbol allowlist
-- Paper/live mode separation
-- Exportable audit logs for judges
-- Render Postgres support via `DATABASE_URL`
-- Optional Bitget MCP endpoint health check
+- **Multi-Tenant Architecture**: Supports isolated user registration, login, and one-click guest accounts.
+- **Robust Security**: Includes password hashing with PBKDF2, signed HTTP-only sessions, and strict CSRF protection.
+- **Risk Assessment Engine**: Dynamically evaluates spread, funding rate, liquidity, volatility, and drawdown risk before permitting any execution.
+- **In-Memory Exchange Execution**: Securely stores encrypted Bitget API keys and strictly decrypts them in-memory only at the moment of approved execution.
+- **Hard Guardrails**: Enforces server-side notional caps (`LIVE_MAX_NOTIONAL_USDT`), live-trading kill switches, and allowed-symbol lists.
+- **Auditable Records**: Generates exportable, cryptographic audit logs for every decision and blocked execution.
+- **Flexible Storage**: Defaults to an ephemeral JSON store for rapid testing, but automatically upgrades to PostgreSQL if `DATABASE_URL` is provided.
 
-## What Users Can Do Immediately
+## Getting Started
 
-After deployment, a public user can:
+### Prerequisites
 
-- Continue as a guest
-- Pull live Bitget market data
-- Evaluate candidate trades
-- Save paper/live-filter audit logs
-- Export judging evidence from the saved logs
+- Node.js v18 or higher
+- A Bitget account with a restricted futures API key (for live execution)
 
-For actual live order placement, the user connects their own Bitget API key inside the app.
+### Local Installation
 
-## What You Must Provide For Live Orders
+1. Clone the repository and navigate to the project root.
+2. Copy the example environment variables:
+   ```bash
+   cp .env.example .env
+   ```
+3. Install dependencies:
+   ```bash
+   npm install
+   ```
+4. Start the server:
+   ```bash
+   npm start
+   ```
+5. Open your browser to `http://localhost:8787`.
 
-Live trading cannot happen until a user connects their own restricted Bitget API key inside the app. The server does not need a shared Bitget key.
+## Environment Variables
 
-Production environment variables:
+For production or live execution, configure the following variables:
 
-```bash
-APP_SECRET=long-random-production-secret
-DATABASE_URL=postgres-connection-string
-LIVE_TRADING_ENABLED=true
-```
-
-Use a restricted Bitget futures API key. For judging, keep `LIVE_MAX_NOTIONAL_USDT` small. The Render blueprint enables live mode at the app level, but orders still require a logged-in user, a connected Bitget key, an agent `TRADE` decision, an allowed symbol, and a notional below the cap.
-
-## Run Locally
-
-```bash
-cd outputs/nulltrade-ai-production
-copy .env.example .env
-npm install
-node server.js
-```
-
-Open `http://localhost:8787`.
+- `APP_SECRET`: A long, random cryptographic secret used for signing sessions and encrypting API keys.
+- `DATABASE_URL`: Your PostgreSQL connection string.
+- `LIVE_TRADING_ENABLED`: Set to `true` to allow live order execution.
+- `LIVE_MAX_NOTIONAL_USDT`: The absolute maximum size of a single trade (e.g., `25`).
+- `LIVE_ALLOWED_SYMBOLS`: A comma-separated list of permitted tickers (e.g., `BTCUSDT,ETHUSDT`).
 
 ## Live Trading Guardrails
 
-The server refuses live orders unless all are true:
+NullTrade AI enforces a strict multi-layer defense. The server will actively refuse live orders unless **all** of the following conditions are met:
 
-- `LIVE_TRADING_ENABLED=true`
-- The user has connected Bitget credentials
-- The request is submitted by a logged-in or guest user
-- The agent decision is `TRADE`
-- The symbol is listed in `LIVE_ALLOWED_SYMBOLS`
-- The calculated notional is at or below `LIVE_MAX_NOTIONAL_USDT`
+1. `LIVE_TRADING_ENABLED` is set to `true`.
+2. The user is authenticated and has connected a valid Bitget API key.
+3. The symbol is explicitly listed in `LIVE_ALLOWED_SYMBOLS`.
+4. The calculated notional size is strictly at or below `LIVE_MAX_NOTIONAL_USDT`.
+5. The Refusal Engine algorithms grade the candidate with a conclusive `TRADE` decision.
 
-Rejected trades are still logged for audit.
+Blocked trades are never submitted to the exchange, but are permanently logged for auditing.
 
 ## Bitget Integration
 
-The app uses Bitget's documented v2 futures order endpoint:
-
-- `POST /api/v2/mix/order/place-order`
-- Required payload fields used by the app: `symbol`, `productType`, `marginMode`, `marginCoin`, `size`, `side`, `tradeSide`, `orderType`, and `clientOid`.
-
-It signs requests using Bitget's documented `ACCESS-KEY`, `ACCESS-SIGN`, `ACCESS-TIMESTAMP`, and `ACCESS-PASSPHRASE` headers.
-
-Market data uses:
-
-- `GET /api/v2/mix/market/ticker`
-
-Credential validation uses:
-
-- `GET /api/v2/mix/account/accounts`
-
-References:
-
-- https://www.bitget.com/api-doc/contract/trade/Place-Order
-- https://www.bitget.com/api-doc/contract/account/Get-Account-List
-
-If Bitget changes endpoint behavior, update `server.js` in the `BitgetClient` class.
+NullTrade AI uses Bitget's documented v2 futures endpoints:
+- **Execution**: `POST /api/v2/mix/order/place-order`
+- **Market Data**: `GET /api/v2/mix/market/ticker`
+- **Validation**: `GET /api/v2/mix/account/accounts`
 
 ## Deployment
 
-Deploy this folder to Render from a GitHub/GitLab/Bitbucket repo using the included `render.yaml`. The Blueprint provisions a Postgres database and injects `DATABASE_URL`.
+NullTrade AI is designed to be easily deployed to cloud providers like Render, Heroku, or standard VPS environments. Ensure that `DATABASE_URL` is set to a persistent PostgreSQL instance to prevent data loss across container restarts.
 
-Do not connect a live Bitget key unless it is restricted, IP-allowlisted where possible, and funded only with judge-safe capital.
+**Security Warning**: Never provide a master Bitget API key. Always create a restricted sub-account key with limited withdrawal permissions and IP allowlisting enabled where possible.
