@@ -1,0 +1,569 @@
+{
+  "project": "NullTrade AI",
+  "exportedAt": "2026-06-26T16:15:29.788Z",
+  "logs": [
+    {
+      "id": "2b120fbd-37dc-4c6e-a2fa-8bb140aede77",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:15:26.909Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "SHORT",
+        "size": 0.3413,
+        "price": 0.1384,
+        "symbol": "DOGEUSDT",
+        "liquidity": 92,
+        "orderType": "market",
+        "spreadBps": 6,
+        "technical": 90,
+        "fundingBps": 14,
+        "newsRegime": 63,
+        "strictness": 62,
+        "volatility": 47,
+        "drawdownRisk": 6,
+        "recentPerformance": 93
+      },
+      "decision": {
+        "score": 82,
+        "reason": "Accepted: setup passed risk, liquidity, funding, volatility, and regime checks.",
+        "decision": "TRADE",
+        "confidence": 87,
+        "requiredConditions": [
+          "Maintain current execution quality through order submission."
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "e4f06d88-08a7-4bff-9ee2-f9e834ae63b8",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:15:24.745Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "LONG",
+        "size": 0.4223,
+        "price": 0.1858,
+        "symbol": "DOGEUSDT",
+        "liquidity": 82,
+        "orderType": "market",
+        "spreadBps": 10,
+        "technical": 76,
+        "fundingBps": 10,
+        "newsRegime": 63,
+        "strictness": 64,
+        "volatility": 45,
+        "drawdownRisk": 29,
+        "recentPerformance": 77
+      },
+      "decision": {
+        "score": 73,
+        "reason": "Accepted: setup passed risk, liquidity, funding, volatility, and regime checks.",
+        "decision": "TRADE",
+        "confidence": 78,
+        "requiredConditions": [
+          "Maintain current execution quality through order submission."
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "1d0dea3c-5795-4e35-8a96-c2f6af25305e",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:15:22.746Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "SHORT",
+        "size": 0.3516,
+        "price": 60149.9,
+        "symbol": "BTCUSDT",
+        "liquidity": 21,
+        "orderType": "market",
+        "spreadBps": 40,
+        "technical": 36,
+        "fundingBps": 25,
+        "newsRegime": 55,
+        "strictness": 68,
+        "volatility": 87,
+        "drawdownRisk": 59,
+        "recentPerformance": 39
+      },
+      "decision": {
+        "score": 0,
+        "reason": "Rejected: spread 40bps above 18bps; funding 25bps above 22bps; liquidity 21 below 58; drawdown risk 59 above 35.",
+        "decision": "NO_TRADE",
+        "confidence": 10,
+        "requiredConditions": [
+          "spread 40bps above 18bps",
+          "funding 25bps above 22bps",
+          "liquidity 21 below 58",
+          "drawdown risk 59 above 35"
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "690fa8a8-0bb7-4147-8743-90e37bd2d0fe",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:15:20.312Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "SHORT",
+        "size": 0.3104,
+        "price": 0.07497,
+        "symbol": "DOGEUSDT",
+        "liquidity": 51,
+        "orderType": "market",
+        "spreadBps": 15,
+        "technical": 58,
+        "fundingBps": 33,
+        "newsRegime": 26,
+        "strictness": 79,
+        "volatility": 51,
+        "drawdownRisk": 59,
+        "recentPerformance": 39
+      },
+      "decision": {
+        "score": 0,
+        "reason": "Rejected: funding 33bps above 22bps; liquidity 51 below 58; drawdown risk 59 above 35; hostile news regime 26.",
+        "decision": "NO_TRADE",
+        "confidence": 10,
+        "requiredConditions": [
+          "funding 33bps above 22bps",
+          "liquidity 51 below 58",
+          "drawdown risk 59 above 35",
+          "hostile news regime 26"
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "35ee14a6-3603-4932-a8ea-5153723c4840",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:15:18.122Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "SHORT",
+        "size": 0.4361,
+        "price": 0.1281,
+        "symbol": "DOGEUSDT",
+        "liquidity": 64,
+        "orderType": "market",
+        "spreadBps": 25,
+        "technical": 22,
+        "fundingBps": 28,
+        "newsRegime": 28,
+        "strictness": 68,
+        "volatility": 91,
+        "drawdownRisk": 59,
+        "recentPerformance": 50
+      },
+      "decision": {
+        "score": 0,
+        "reason": "Rejected: spread 25bps above 18bps; funding 28bps above 22bps; drawdown risk 59 above 35; hostile news regime 28.",
+        "decision": "NO_TRADE",
+        "confidence": 10,
+        "requiredConditions": [
+          "spread 25bps above 18bps",
+          "funding 28bps above 22bps",
+          "drawdown risk 59 above 35",
+          "hostile news regime 28"
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "34cbbd18-0301-4fab-ba98-085af9f5577d",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:15:15.999Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "SHORT",
+        "size": 0.4864,
+        "price": 3659,
+        "symbol": "ETHUSDT",
+        "liquidity": 20,
+        "orderType": "market",
+        "spreadBps": 25,
+        "technical": 49,
+        "fundingBps": 40,
+        "newsRegime": 27,
+        "strictness": 70,
+        "volatility": 93,
+        "drawdownRisk": 25,
+        "recentPerformance": 21
+      },
+      "decision": {
+        "score": 0,
+        "reason": "Rejected: spread 25bps above 18bps; funding 40bps above 22bps; liquidity 20 below 58; hostile news regime 27.",
+        "decision": "NO_TRADE",
+        "confidence": 10,
+        "requiredConditions": [
+          "spread 25bps above 18bps",
+          "funding 40bps above 22bps",
+          "liquidity 20 below 58",
+          "hostile news regime 27"
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "71fd7056-3e67-4e28-9363-2697b34b60de",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:15:13.683Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "SHORT",
+        "size": 0.1739,
+        "price": 72.398,
+        "symbol": "SOLUSDT",
+        "liquidity": 81,
+        "orderType": "market",
+        "spreadBps": 15,
+        "technical": 67,
+        "fundingBps": 7,
+        "newsRegime": 76,
+        "strictness": 74,
+        "volatility": 45,
+        "drawdownRisk": 12,
+        "recentPerformance": 92
+      },
+      "decision": {
+        "score": 75,
+        "reason": "Accepted: setup passed risk, liquidity, funding, volatility, and regime checks.",
+        "decision": "TRADE",
+        "confidence": 80,
+        "requiredConditions": [
+          "Maintain current execution quality through order submission."
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "4267a09a-1aa5-48d9-b6b7-c0fdbb5e42fe",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:15:10.316Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "LONG",
+        "size": 0.4701,
+        "price": 145,
+        "symbol": "SOLUSDT",
+        "liquidity": 23,
+        "orderType": "market",
+        "spreadBps": 31,
+        "technical": 37,
+        "fundingBps": 38,
+        "newsRegime": 43,
+        "strictness": 70,
+        "volatility": 80,
+        "drawdownRisk": 60,
+        "recentPerformance": 34
+      },
+      "decision": {
+        "score": 0,
+        "reason": "Rejected: spread 31bps above 18bps; funding 38bps above 22bps; liquidity 23 below 58; drawdown risk 60 above 35; hostile news regime 43.",
+        "decision": "NO_TRADE",
+        "confidence": 10,
+        "requiredConditions": [
+          "spread 31bps above 18bps",
+          "funding 38bps above 22bps",
+          "liquidity 23 below 58",
+          "drawdown risk 60 above 35",
+          "hostile news regime 43"
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "e54f7cb7-3478-40ca-9713-27f2377e3083",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:15:08.000Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "LONG",
+        "size": 0.1587,
+        "price": 72.422,
+        "symbol": "SOLUSDT",
+        "liquidity": 72,
+        "orderType": "market",
+        "spreadBps": 12,
+        "technical": 64,
+        "fundingBps": 12,
+        "newsRegime": 56,
+        "strictness": 80,
+        "volatility": 30,
+        "drawdownRisk": 16,
+        "recentPerformance": 62
+      },
+      "decision": {
+        "score": 64,
+        "reason": "Rejected: score 64 below strictness 80.",
+        "decision": "NO_TRADE",
+        "confidence": 54,
+        "requiredConditions": [
+          "Maintain current execution quality through order submission."
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "eaf0e5bf-a5bd-4c92-b3bb-930586eaff5f",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:15:05.815Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "LONG",
+        "size": 0.158,
+        "price": 1579.31,
+        "symbol": "BTCUSDT",
+        "liquidity": 89,
+        "orderType": "market",
+        "spreadBps": 2,
+        "technical": 85,
+        "fundingBps": 16,
+        "newsRegime": 95,
+        "strictness": 69,
+        "volatility": 29,
+        "drawdownRisk": 10,
+        "recentPerformance": 72
+      },
+      "decision": {
+        "score": 83,
+        "reason": "Accepted: setup passed risk, liquidity, funding, volatility, and regime checks.",
+        "decision": "TRADE",
+        "confidence": 88,
+        "requiredConditions": [
+          "Maintain current execution quality through order submission."
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "5bf85766-f77d-4600-9be4-0dc23f43165e",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:15:03.154Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "LONG",
+        "size": 0.4511,
+        "price": 3789,
+        "symbol": "ETHUSDT",
+        "liquidity": 65,
+        "orderType": "market",
+        "spreadBps": 2,
+        "technical": 79,
+        "fundingBps": 14,
+        "newsRegime": 59,
+        "strictness": 60,
+        "volatility": 39,
+        "drawdownRisk": 9,
+        "recentPerformance": 88
+      },
+      "decision": {
+        "score": 72,
+        "reason": "Accepted: setup passed risk, liquidity, funding, volatility, and regime checks.",
+        "decision": "TRADE",
+        "confidence": 77,
+        "requiredConditions": [
+          "Maintain current execution quality through order submission."
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "1ac6e071-d5cd-4811-b63f-ef700b4fbdee",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:15:01.479Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "LONG",
+        "size": 0.2451,
+        "price": 165,
+        "symbol": "SOLUSDT",
+        "liquidity": 81,
+        "orderType": "market",
+        "spreadBps": 15,
+        "technical": 66,
+        "fundingBps": 4,
+        "newsRegime": 82,
+        "strictness": 65,
+        "volatility": 20,
+        "drawdownRisk": 23,
+        "recentPerformance": 71
+      },
+      "decision": {
+        "score": 75,
+        "reason": "Accepted: setup passed risk, liquidity, funding, volatility, and regime checks.",
+        "decision": "TRADE",
+        "confidence": 80,
+        "requiredConditions": [
+          "Maintain current execution quality through order submission."
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "6475018e-3c50-4b36-98cc-e94d35f44acb",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:14:59.099Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "LONG",
+        "size": 0.2514,
+        "price": 72.414,
+        "symbol": "ETHUSDT",
+        "liquidity": 76,
+        "orderType": "market",
+        "spreadBps": 3,
+        "technical": 81,
+        "fundingBps": 14,
+        "newsRegime": 65,
+        "strictness": 73,
+        "volatility": 50,
+        "drawdownRisk": 9,
+        "recentPerformance": 90
+      },
+      "decision": {
+        "score": 75,
+        "reason": "Accepted: setup passed risk, liquidity, funding, volatility, and regime checks.",
+        "decision": "TRADE",
+        "confidence": 80,
+        "requiredConditions": [
+          "Maintain current execution quality through order submission."
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "ed11a374-d58e-4e2d-8606-15f48a6c0d44",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:14:57.118Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "SHORT",
+        "size": 0.0817,
+        "price": 155,
+        "symbol": "SOLUSDT",
+        "liquidity": 59,
+        "orderType": "market",
+        "spreadBps": 36,
+        "technical": 36,
+        "fundingBps": 23,
+        "newsRegime": 20,
+        "strictness": 69,
+        "volatility": 85,
+        "drawdownRisk": 66,
+        "recentPerformance": 50
+      },
+      "decision": {
+        "score": 0,
+        "reason": "Rejected: spread 36bps above 18bps; funding 23bps above 22bps; drawdown risk 66 above 35; hostile news regime 20.",
+        "decision": "NO_TRADE",
+        "confidence": 10,
+        "requiredConditions": [
+          "spread 36bps above 18bps",
+          "funding 23bps above 22bps",
+          "drawdown risk 66 above 35",
+          "hostile news regime 20"
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "0c4f2e74-7baf-4ea5-a17b-5394733c31c4",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:14:54.360Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "LONG",
+        "size": 0.2399,
+        "price": 65243,
+        "symbol": "BTCUSDT",
+        "liquidity": 67,
+        "orderType": "market",
+        "spreadBps": 10,
+        "technical": 92,
+        "fundingBps": 5,
+        "newsRegime": 56,
+        "strictness": 77,
+        "volatility": 48,
+        "drawdownRisk": 5,
+        "recentPerformance": 63
+      },
+      "decision": {
+        "score": 69,
+        "reason": "Rejected: score 69 below strictness 77.",
+        "decision": "NO_TRADE",
+        "confidence": 59,
+        "requiredConditions": [
+          "Maintain current execution quality through order submission."
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    },
+    {
+      "id": "f722bf9a-572f-4eda-b50f-5da1f7448836",
+      "userId": "3f392e33-333c-43c5-ab66-4fa0ffb63704",
+      "createdAt": "2026-06-26T16:14:50.780Z",
+      "mode": "paper",
+      "candidate": {
+        "side": "LONG",
+        "size": 0.3559,
+        "price": 72.382,
+        "symbol": "SOLUSDT",
+        "liquidity": 75,
+        "orderType": "market",
+        "spreadBps": 13,
+        "technical": 94,
+        "fundingBps": 6,
+        "newsRegime": 76,
+        "strictness": 71,
+        "volatility": 26,
+        "drawdownRisk": 8,
+        "recentPerformance": 74
+      },
+      "decision": {
+        "score": 80,
+        "reason": "Accepted: setup passed risk, liquidity, funding, volatility, and regime checks.",
+        "decision": "TRADE",
+        "confidence": 85,
+        "requiredConditions": [
+          "Maintain current execution quality through order submission."
+        ]
+      },
+      "execution": {
+        "status": "not_submitted"
+      }
+    }
+  ]
+}
